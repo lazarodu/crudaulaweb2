@@ -19,9 +19,14 @@ class Aplicacao
 {
   public static function run()
   {
-    if (isset($_GET["acao"])) {
-      echo $_GET["acao"];
+    $layout = new Template('view/layout.html');
+    $class = "Inicio";
+    if (class_exists($class)) {
+      $pagina = new $class();
+      $conteudo = $pagina->controller();
+      $layout->set('conteudo', $conteudo);
     }
+    echo $layout->saida();
   }
 }
 Aplicacao::run();
