@@ -17,6 +17,7 @@ spl_autoload_register('classLoader');
 // Front Controller
 class Aplicacao
 {
+  private static $app = "/lazaro1";
   public static function run()
   {
     $layout = new Template('view/layout.html');
@@ -37,6 +38,7 @@ class Aplicacao
       } else {
         $pagina->controller();
       }
+      $layout->set("uri", self::$app);
       $layout->set('conteudo', $pagina->getMessage());
     }
     echo $layout->saida();
