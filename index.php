@@ -20,11 +20,24 @@ class Aplicacao
   public static function run()
   {
     $layout = new Template('view/layout.html');
-    $class = "Inicio";
+    if (isset($_GET["class"])) {
+      $class = $_GET["class"];
+    } else {
+      $class = "Inicio";
+    }
+    if (isset($_GET["method"])) {
+      $method = $_GET["method"];
+    } else {
+      $method = "";
+    }
     if (class_exists($class)) {
       $pagina = new $class();
-      $conteudo = $pagina->controller();
-      $layout->set('conteudo', $conteudo);
+      if (method_exists($pagina, $method)) {
+        $pagina->$method();
+      } else {
+        $pagina->controller();
+      }
+      $layout->set('conteudo', $pagina->getMessage());
     }
     echo $layout->saida();
   }
