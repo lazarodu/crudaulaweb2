@@ -23,4 +23,11 @@ final class Transaction
       self::$conexao = null;
     }
   }
+  public static function rollback()
+  {
+    if (!empty(self::$conexao)) {
+      self::$conexao->rollback();
+      self::$conexao = null;
+    }
+  }
 }
