@@ -14,5 +14,15 @@ class Crud
     } else {
       $sql = "SELECT $campos FROM $this->tabela WHERE $condicao";
     }
+    $resultado = $conexao->query($sql);
+    if ($resultado->rowCount() > 0) {
+      while ($registros = $resultado->fetch(PDO::FETCH_ASSOC)) {
+        $lista[] = $registros;
+      }
+      return $lista;
+    } else {
+      echo "Nenhum registro encontrado!";
+      return false;
+    }
   }
 }
