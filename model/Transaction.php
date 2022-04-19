@@ -16,4 +16,11 @@ final class Transaction
   {
     return self::$conexao;
   }
+  public static function close()
+  {
+    if (!empty(self::$conexao)) {
+      self::$conexao->commit();
+      self::$conexao = null;
+    }
+  }
 }
