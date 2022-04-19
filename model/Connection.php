@@ -15,7 +15,6 @@ final class Connection
       case 'pgsql':
         $conn = new PDO("pgsql:dbname={$name};host={$host}", $user, $pass);
         break;
-
       case 'mysql':
         $conn = new
           PDO("mysql:host={$host};port=3306;dbname={$name}", $user, $pass);
@@ -33,5 +32,8 @@ final class Connection
         $conn = new PDO("mssql:host={$host},1433;dbname={$name}", $user, $pass);
         break;
     }
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->query("SET NAMES 'utf8'");
+    return $conn;
   }
 }
