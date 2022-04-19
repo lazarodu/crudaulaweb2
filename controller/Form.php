@@ -2,6 +2,10 @@
 class Form
 {
   private $message = "";
+  public function __construct()
+  {
+    Transaction::open();
+  }
   public function controller()
   {
     $form = new Template("view/form.html");
@@ -25,5 +29,9 @@ class Form
   public function getMessage()
   {
     return $this->message;
+  }
+  public function __destruct()
+  {
+    Transaction::close();
   }
 }
