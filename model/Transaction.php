@@ -12,4 +12,8 @@ final class Transaction
       self::$conexao->beginTransaction();
     }
   }
+  public static function get()
+  {
+    return self::$conexao;
+  }
 }
