@@ -15,15 +15,16 @@
       <td>{configuracao}</td>
       <td>{valor}</td>
       <td>
-        <button type="button"
-        >Editar</button>
+        <button type="button">Editar</button>
       </td>
       <td>
-        <button type="button"
+        <button
+          type="button"
           onclick="if(confirm('Deseja realmente remover?'))
             location.href='?class=Tabela&method=remover&id={id}'"
-          >Remover</button>
-        >Remover</button>
+        >
+          Remover
+        </button>
       </td>
     </tr>
     {/linha}
