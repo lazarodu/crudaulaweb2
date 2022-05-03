@@ -9,6 +9,10 @@ class Form
   public function controller()
   {
     $form = new Template("view/form.html");
+    $form->set("id", "");
+    $form->set("marca", "");
+    $form->set("configuracao", "");
+    $form->set("valor", "");
     $this->message = $form->saida();
   }
   public function salvar()
