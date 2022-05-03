@@ -35,8 +35,10 @@ class Form
         $computador = new Crud('computador');
         $resultado = $computador->select("*", "id=$id");
         $form = new Template("view/form.html");
-        if (is_array($resultado)) {
+        foreach ($resultado[0] as $cod => $valor) {
+          $form->set($cod, $valor);
         }
+        $this->message = $form->saida();
       } catch (Exception $e) {
         echo $e->getMessage();
       }
