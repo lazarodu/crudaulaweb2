@@ -69,7 +69,7 @@ class Crud
           $this->message = "Atualizado com sucesso!";
           $this->error = false;
         } else {
-          $this->message = "Erro ao atualizar!";
+          $this->message = "Nenhum registro atualizado!";
           $this->error = true;
         }
       } catch (Exception $e) {
