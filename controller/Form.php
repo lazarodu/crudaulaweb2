@@ -2,6 +2,7 @@
 class Form
 {
   private $message = "";
+  private $error = "";
   public function __construct()
   {
     Transaction::open();
@@ -30,6 +31,7 @@ class Form
           $id = $conexao->quote($_POST['id']);
           $computador->update("marca=$marca,configuracao=$configuracao,valor=$valor", "id=$id");
         }
+        $this->message = $computador->getMessage();
       } catch (Exception $e) {
         echo $e->getMessage();
       }
